@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue-share</title>
+    <meta name="description" itemprop="description" content="yz_mgm" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="cleartype" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="src/share/school.css" />
+  </head>
+  <body>
+    <!--<div id="app"></div>-->
+    <!-- built files will be auto injected -->
+
+    <!-- [[页面主体 -->
+    <article class="wzbank-wrap " id="vue-share">
+
+      <!-- 顶部banner -->
+      <section class="header-con">
+        <h1 class="logo hide">开通账户<br></h1>
+      </section>
+
+      <!-- 主体内容 -->
+      <section class="main-con">
+        <div class="tuition-piece">
+          <div class="inner">
+            <p class="name"></p>
+            <strong class="num"></strong>
+            <!-- 点击明细后再类tab-tui的基础上再加个类 on； 且下边列表结构将类hide去掉； -->
+            <div class="tab-tui">
+              <a class="detail" >明细</a>
+              <ul class="tui-list hide"  >
+                <li v-for="item in studentInfo">
+                  <p class="form-left"> {{item.student}} </p>
+                  <p class="form-right">{{item.school}}</p>
+
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- 父母且自己开户 -->
+        <div class="con-btn-show pb-25 hide student" >
+          <a class="btn bg-btn" id="parent" @click="click()">请父母开户</a>
+          <a class="btn" id="student" @click="click()" >自己开户</a>
+        </div>
+        <!-- 开户帮子女 -->
+        <div class="con-btn-show hide parent">
+          <a class="btn bg-btn"  @click="click()" >开户帮子女</a>
+        </div>
+
+        <div class="explain-txt-show">
+          <p class="txt">1</p>
+          <p class="txt">2</p>
+          <p class="txt">3</p>
+        </div>
+      </section>
+
+      <section class="support-con">
+        <div class="inner">
+          <p class="txt">联合技术支持：<i class="ico-sup"></i></p>
+        </div>
+      </section>
+
+    </article>
+    <!-- 页面主体]] -->
+
+
+    <!-- [[弹窗-->
+    <div class="pop-mask-con  hide" id="share">
+      <!-- 分享弹窗 -->
+      <div class="pop-dialog-share ">
+        <div class="inner">
+          <i class="ico-arrow"></i>
+          <p class="txt">击右上角按钮，分享本页面给父母，请父母来缴费。</p>
+        </div>
+      </div>
+    </div>
+    <!-- 弹窗]]-->
+
+
+    <script src="https://open.mobile.qq.com/sdk/qqapi.js?_bid=152"></script>
+    <script src="../assets/lib/momentjs/moment.min.js"></script>
+    <script src="../assets/lib/vuejs/vue.min.js"></script>
+    <script src="../assets/lib/vuejs/vue-resource.min.js"></script>
+    <script src="../assets/js/mixin.js"></script>
+    <script src="src/share/student.js"></script>
+
+    <script>
+      FastClick.attach(document.body);
+      seajs.use('student', function (result) {
+        result.init();
+      });
+
+      //    seajs.use('index', function (result) {
+      //        result.init();
+      //    });
+    </script>
+
+
+
+  </body>
+</html>
+
+
+
